@@ -67,7 +67,7 @@ func (c *AdminCustomerService) TrafficReset() error {
 // 更新客户已用流量
 func (c *AdminCustomerService) UpdateCustomerServiceTrafficUsed(customerServiceArr *[]model.CustomerService, userIds []int64) error {
 	var query []model.CustomerService
-	err := global.DB.Where("id in ?", userIds).Select("id", "used_up", "used_down").Find(&query).Error
+	err := global.DB.Where("user_id in ?", userIds).Select("id", "used_up", "used_down").Find(&query).Error
 	if err != nil {
 		return err
 	}
